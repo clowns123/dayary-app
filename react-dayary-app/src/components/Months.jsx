@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import DateContext from "../contexts/date";
 
 const MonthBox = styled.div`
@@ -19,17 +18,13 @@ const MonthBox = styled.div`
     margin: 5px 20px;
     cursor: pointer;
     border-radius: 25px;
+    color: #eeeeee;
     outline: 0;
 
     &:hover {
       background-color: #181818;
     }
   }
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: #eeeeee;
 `;
 
 export default function Months() {
@@ -41,10 +36,8 @@ export default function Months() {
 
   return state.state.map(({ title }, i) => (
     <MonthBox>
-      <button>
-        <StyledLink key={i} onClick={(e) => click(title, e)}>
-          {title}
-        </StyledLink>
+      <button key={i} onClick={(e) => click(title, e)}>
+        {title}
       </button>
     </MonthBox>
   ));
