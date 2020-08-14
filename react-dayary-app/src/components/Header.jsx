@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const HeaderBox = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Monoton&family=Roboto&display=swap");
   display: relative;
   background-color: #c3bef0;
   width: 100%;
@@ -30,7 +30,7 @@ const HeaderBox = styled.div`
     font-size: 2.5em;
     position: absolute;
     top: 3px;
-    right: 40px;
+    right: 5px;
     justify-content: center;
     color: #521262;
   }

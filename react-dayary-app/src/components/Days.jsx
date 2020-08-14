@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Modal from "./Modal";
+import client from "../lib/api/client";
+import DateContext, { DateProvider } from "../contexts/date";
 
 const DaysBox = styled.div`
   display: grid;
@@ -32,6 +34,7 @@ const DayListItem = styled.button`
   outline: 0;
 `;
 
+<<<<<<< HEAD
 const StyledInput = styled.input`
   text-align: left;
   width: 210px;
@@ -46,23 +49,33 @@ const SaveButton = styled.button`
   border: none;
 `;
 let num = 0;
+=======
+>>>>>>> 7b6eb4d64fe9120c9c9deb33c836bfa4032c9bf0
 export default function Days({ months, lastDay }) {
   let obj = [];
   for (let i = 1; i <= lastDay; i++) {
     obj = [...obj, { [`${i}`]: i }];
   }
-  const click = (num) => {
-    console.log(num);
-  };
   const [modalVisible, setModalVisible] = useState(false);
+  const a = useContext(DateContext);
+  const openModal = async (n) => {
+    if (n < 10) n = `${0}${n}`;
 
-  const openModal = (n) => {
-    num = n;
-    setModalVisible(true);
+    const res = await client.get("/api/posts");
+    const data = res.data.filter((d) => {
+      return d.publishedDate.slice(8, 10) === n;
+    });
+    const message = data[0];
+    if (message !== undefined) {
+      a.state.message = message.message;
+      setModalVisible(true);
+    } else {
+      a.state.publishedDate = `2020-08-${n}`;
+      setModalVisible(true);
+    }
   };
 
   const closeModal = () => {
-    console.log("close");
     setModalVisible(false);
   };
 
@@ -76,16 +89,25 @@ export default function Days({ months, lastDay }) {
             maskClosable={true}
             onClose={closeModal}
           >
+<<<<<<< HEAD
             <span>Day {num} &nbsp;</span>
             <StyledInput autoFocus></StyledInput>
             <button>Save</button>
+=======
+            {a.state.message}
+>>>>>>> 7b6eb4d64fe9120c9c9deb33c836bfa4032c9bf0
           </Modal>
         )}
 
         {obj.map((o, i) => {
           return (
+<<<<<<< HEAD
             <DayListItem key={o} onClick={() => openModal(i + 1)}>
               Day {i + 1}
+=======
+            <DayListItem key={i} onClick={() => openModal(i + 1)}>
+              {i + 1}
+>>>>>>> 7b6eb4d64fe9120c9c9deb33c836bfa4032c9bf0
             </DayListItem>
           );
         })}

@@ -1,26 +1,29 @@
-import React from "react";
+import React, { useRef, useContext } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import CloseButton from "./CloseButton";
+import client from "../lib/api/client";
+import DateContext from "../contexts/date";
 
-function Modal({
-  className,
-  onClose,
-  maskClosable,
-  closable,
-  visible,
-  children,
-}) {
+function Modal({ className, onClose, maskClosable, visible, children }) {
+  const a = useContext(DateContext);
   const onMaskClick = (e) => {
+    a.state.message = "";
     onClose(e);
   };
 
-  const close = (e) => {
-    console.log("test");
-    if (onClose) {
-      onClose(e);
+  const enter = async (e) => {
+    if (e.keyCode !== 13) {
+      return;
     }
+    await client.post("/api/posts", {
+      message: changeRef.current.value,
+      publishedDate: a.state.publishedDate,
+    });
+
+    onClose(e);
   };
+
+  const changeRef = useRef();
   return (
     <>
       <ModalOverlay visible={visible} />
@@ -30,9 +33,15 @@ function Modal({
         tabIndex="-1"
         visible={visible}
       >
-        <ModalInner tabIndex="0" className="modal-inner">
-          {children}
-        </ModalInner>
+        {children === "" ? (
+          <ModalInner tabIndex="0" className="modal-inner">
+            <input autoFocus ref={changeRef} onKeyDown={enter}></input>
+          </ModalInner>
+        ) : (
+          <ModalInner tabIndex="0" className="modal-inner">
+            {children}
+          </ModalInner>
+        )}
       </ModalWrapper>
     </>
   );
