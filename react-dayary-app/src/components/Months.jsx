@@ -6,7 +6,9 @@ const MonthBox = styled.div`
   left: 160px;
   margin-top: 11px;
   padding: 20px 5px;
+
   button {
+    font-family: "Major Mono Display", monospace;
     display: inline-block;
     background-color: #311d3f;
     width: 50px;
@@ -17,8 +19,10 @@ const MonthBox = styled.div`
     border-radius: 25px;
     color: #eeeeee;
     outline: 0;
+    font-weight: 600;
+
     &:hover {
-      background-color: #181818;
+      background-color: #c3bef0;
     }
   }
 `;

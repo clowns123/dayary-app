@@ -19,7 +19,7 @@ const DayList = styled.div`
 const DayListItem = styled.button`
   text-decoration: none;
   color: #eeeeee;
-
+  font-family: "Major Mono Display", monospace;
   display: block;
   background-color: #521262;
   width: 50px;
@@ -34,6 +34,20 @@ const DayListItem = styled.button`
   outline: 0;
 `;
 
+const StyledInput = styled.input`
+  text-align: left;
+  width: 210px;
+  height: 100px;
+  letter-spacing: 1px;
+  wrap: hard;
+  margin-right: 10px;
+`;
+
+const SaveButton = styled.button`
+  outline: none;
+  border: none;
+`;
+let num = 0;
 export default function Days({ months, lastDay }) {
   let obj = [];
   for (let i = 1; i <= lastDay; i++) {
@@ -78,8 +92,8 @@ export default function Days({ months, lastDay }) {
 
         {obj.map((o, i) => {
           return (
-            <DayListItem key={i} onClick={() => openModal(i + 1)}>
-              {i + 1}
+            <DayListItem key={o} onClick={() => openModal(i + 1)}>
+              Day {i + 1}
             </DayListItem>
           );
         })}
