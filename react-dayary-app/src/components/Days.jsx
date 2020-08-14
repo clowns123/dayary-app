@@ -92,7 +92,7 @@ export default function Days({ months, lastDay }) {
 
         {obj.map((o, i) => {
           return (
-            <DayListItem key={o} onClick={() => openModal(i + 1)}>
+            <DayListItem key={i} onClick={() => openModal(i + 1)}>
               Day {i + 1}
             </DayListItem>
           );

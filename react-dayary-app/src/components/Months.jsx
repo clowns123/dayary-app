@@ -6,9 +6,7 @@ const MonthBox = styled.div`
   left: 160px;
   margin-top: 11px;
   padding: 20px 5px;
-
   button {
-    font-family: "Major Mono Display", monospace;
     display: inline-block;
     background-color: #311d3f;
     width: 50px;
@@ -19,23 +17,16 @@ const MonthBox = styled.div`
     border-radius: 25px;
     color: #eeeeee;
     outline: 0;
-    font-weight: 600;
-
     &:hover {
-      background-color: #c3bef0;
+      background-color: #181818;
     }
   }
 `;
 
-export default function Months({ months, click, lastDay }) {
-  let obj = [];
-  for (let i = 1; i <= lastDay; i++) {
-    obj = [...obj, { [`${i}`]: i }];
-  }
+export default function Months({ months, click }) {
   return months.map((months, i) => (
-    <MonthBox>
+    <MonthBox key={i}>
       <button
-        key={i}
         onClick={(e) => click(months.title)}
         className={months.inOpened ? "test" : ""}
       >
