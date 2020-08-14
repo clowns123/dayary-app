@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import DateData from "../App";
+import DateContext, { Consumer } from "../contexts/date";
 
 const DaysBox = styled.div`
   box-sizing: border-box;
@@ -40,12 +41,13 @@ const DayListItem = styled.button`
   outline: 0;
 `;
 
-export default function Days({ getDate, click }) {
+export default function Days({ click }) {
+  const state = useContext(DateContext);
+  console.log(state.state.months);
+  const initstat = [];
   return (
     <DaysBox>
-      <DayList>
-        <DayListItem onClick={click} />
-      </DayList>
+      <DayList></DayList>
     </DaysBox>
   );
 }

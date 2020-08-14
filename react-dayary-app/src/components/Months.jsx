@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import DateContext from "../contexts/date";
+import DateContext, { DateProvider } from "../contexts/date";
 
 const MonthBox = styled.button`
   display: inline-block;
@@ -26,12 +26,17 @@ const StyledLink = styled(Link)`
 
 export default function Months() {
   const state = useContext(DateContext);
+  console.log();
   const click = (title, e) => {
-    state.actions.setInOpened(true);
-    console.log(state.state);
+    state.state.months = state.state.months.map((s) => {
+      return title === s.title
+        ? { ...s, inOpened: true }
+        : { ...s, inOpened: false };
+    });
+    console.log(state.state.months);
   };
 
-  return state.state.map(({ title }, i) => (
+  return state.state.months.map(({ title }, i) => (
     <MonthBox key={i} onClick={(e) => click(title, e)}>
       {title}
     </MonthBox>
