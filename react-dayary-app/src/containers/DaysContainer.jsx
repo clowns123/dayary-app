@@ -6,8 +6,8 @@ const nowDate = new Date();
 const nowYear = nowDate.getFullYear();
 const nowMounth = nowDate.getMonth();
 
-export default function DaysContainer() {
-  return <Days click={click} />;
+export default function DaysContainer({ months, lastDay }) {
+  return <Days click={click} months={months} lastDay={lastDay} />;
 }
 
 const click = async (_, year = nowYear, mounth = nowMounth) => {

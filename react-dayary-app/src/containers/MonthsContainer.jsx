@@ -1,7 +1,6 @@
 import React from "react";
 import Months from "../components/Months";
-import DateData from "../contexts/date";
 
-export default function MonthsContainer() {
-  return <Months />;
+export default function MonthsContainer({ months, click, lastDay }) {
+  return <Months months={months} click={click} lastDay={lastDay} />;
 }

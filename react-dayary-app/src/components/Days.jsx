@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import DateData from "../App";
+import DateContext, { Consumer } from "../contexts/date";
 
 const DaysBox = styled.div`
   display: grid;
@@ -32,11 +33,20 @@ const DayListItem = styled.button`
   outline: 0;
 `;
 
-export default function Days({ getDate, click }) {
+export default function Days({ months, lastDay }) {
+  let obj = [];
+  for (let i = 1; i <= lastDay; i++) {
+    obj = [...obj, { [`${i}`]: i }];
+  }
+  const click = (num) => {};
   return (
     <DaysBox>
       <DayList>
-        <DayListItem onClick={click} />
+        {obj.map((o, i) => {
+          return (
+            <DayListItem key={o} onClick={() => click(i + 1)}></DayListItem>
+          );
+        })}
       </DayList>
     </DaysBox>
   );
