@@ -16,7 +16,6 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/" exact component={Main} />
           <Route component={NotFound} />
-          testcd
         </Switch>
       </BrowserRouter>
     </ErrorBoundary>

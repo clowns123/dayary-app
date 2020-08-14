@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const DaysBox = styled.div`
@@ -15,41 +14,38 @@ const DaysBox = styled.div`
     linear-gradient(to bottom, #cca8e9 1px, transparent 1px);
 `;
 
-const Ul = styled.ul`
-  background-color: ;
+const DayList = styled.div`
+  background-color: wheat;
   padding: 15.5px 20px;
   list-style: none;
-
-  button {
-    display: block;
-    background-color: #521262;
-    width: 50px;
-    height: 50px;
-    margin: 20px 0;
-    border-radius: 25px;
-    display: table;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: none;
-    font-color: #ffffff;
-    cursor: pointer;
-    outline: 0;
-  }
 `;
 
-const StyledLink = styled(Link)`
+const DayListItem = styled.button`
   text-decoration: none;
   color: #eeeeee;
+  display: block;
+
+  background-color: #521262;
+  width: 50px;
+  height: 50px;
+  margin: 20px 0;
+  border-radius: 25px;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: none;
+  color: #ffffff;
+  cursor: pointer;
+  outline: 0;
 `;
 
 export default function Days({ getDate }) {
+  console.log(getDate);
   return (
     <DaysBox>
-      <Ul>
-        <button>
-          <StyledLink>Day</StyledLink>
-        </button>
-      </Ul>
+      <DayList>
+        <DayListItem />
+      </DayList>
     </DaysBox>
   );
 }
