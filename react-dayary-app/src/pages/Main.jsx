@@ -3,6 +3,7 @@ import HeaderContainer from "../containers/HeaderContainer";
 import MonthsContainer from "../containers/MonthsContainer";
 import DaysContainer from "../containers/DaysContainer";
 import styled, { createGlobalStyle } from "styled-components";
+import Modal from "../components/Modal";
 
 const GlobalStyle = createGlobalStyle`
   margin: 0;
@@ -60,6 +61,17 @@ export default function Main() {
   const lastDay = viewDay[0]
     ? viewDay[0].day
     : new Date(nowYear, nowMonth, 0).getDate();
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const openModal = () => {
+    console.log("open");
+    setModalVisible(true);
+  };
+  const closeModal = () => {
+    console.log("close");
+    setModalVisible(false);
+  };
+
   return (
     <>
       <GlobalStyle />
