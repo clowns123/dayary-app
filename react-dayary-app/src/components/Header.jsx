@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const HeaderBox = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
   display: relative;
   background-color: #c3bef0;
   width: 100%;
@@ -12,7 +13,9 @@ const HeaderBox = styled.div`
     linear-gradient(to bottom, #cca8e9 1px, transparent 1px);
 
   h1 {
+    font-family: "Major Mono Display", monospace;
     display: inline-block;
+    font-weight: 900;
     font-size: 2.5em;
     position: relative;
     top: 5px;
@@ -22,6 +25,7 @@ const HeaderBox = styled.div`
   }
 
   h2 {
+    font-family: "Major Mono Display", monospace;
     display: inline-block;
     font-size: 2.5em;
     position: absolute;

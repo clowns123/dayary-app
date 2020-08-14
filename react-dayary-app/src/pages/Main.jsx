@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
   `;
 
 const MainBlock = styled.div`
@@ -17,7 +16,7 @@ const MainBlock = styled.div`
   background-size: 40px 40px;
   background-image: linear-gradient(to right, #cca8e9 1px, transparent 1px),
     linear-gradient(to bottom, #cca8e9 1px, transparent 1px);
-  height: 2000px;
+  height: 100%;
 `;
 const setInitData = () => {
   const temp = [];
@@ -61,16 +60,6 @@ export default function Main() {
   const lastDay = viewDay[0]
     ? viewDay[0].day
     : new Date(nowYear, nowMonth, 0).getDate();
-
-  const [modalVisible, setModalVisible] = useState(false);
-  const openModal = () => {
-    console.log("open");
-    setModalVisible(true);
-  };
-  const closeModal = () => {
-    console.log("close");
-    setModalVisible(false);
-  };
 
   return (
     <>
