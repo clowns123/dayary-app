@@ -3,19 +3,27 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import DateContext, { DateProvider } from "../contexts/date";
 
-const MonthBox = styled.button`
+const MonthBox = styled.div`
   display: inline-block;
-  background-color: #311d3f;
-  width: 50px;
-  height: 50px;
-  border: none;
-  margin: 5px 20px;
-  cursor: pointer;
-  border-radius: 25px;
-  outline: 0;
+  position: relative;
+  left: 160px;
+  margin-top: 11px;
+  padding: 20px 5px;
 
-  &:hover {
-    background-color: #181818;
+  button {
+    display: inline-block;
+    background-color: #311d3f;
+    width: 50px;
+    height: 50px;
+    border: none;
+    margin: 5px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    outline: 0;
+
+    &:hover {
+      background-color: #181818;
+    }
   }
 `;
 
@@ -35,6 +43,7 @@ export default function Months() {
     });
     console.log(state.state.months);
   };
+
 
   return state.state.months.map(({ title }, i) => (
     <MonthBox key={i} onClick={(e) => click(title, e)}>

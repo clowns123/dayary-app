@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const HeaderBox = styled.div`
+  display: relative;
   background-color: #c3bef0;
+  width: 100%;
   height: 7.5em;
   margin: 0;
   background-size: 40px 40px;
@@ -13,7 +15,7 @@ const HeaderBox = styled.div`
     display: inline-block;
     font-size: 2.5em;
     position: relative;
-    top: 30px;
+    top: 5px;
     left: 40px;
     justify-content: center;
     color: #521262;
@@ -23,7 +25,7 @@ const HeaderBox = styled.div`
     display: inline-block;
     font-size: 2.5em;
     position: absolute;
-    top: 30px;
+    top: 3px;
     right: 40px;
     justify-content: center;
     color: #521262;
