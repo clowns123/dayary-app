@@ -47,7 +47,7 @@ export default function Days({ getDate }) {
     <DaysBox>
       <Ul>
         <button>
-          <StyledLink>Day {getDate}</StyledLink>
+          <StyledLink>Day</StyledLink>
         </button>
       </Ul>
     </DaysBox>
