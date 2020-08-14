@@ -3,19 +3,27 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import DateContext from "../contexts/date";
 
-const MonthBox = styled.button`
+const MonthBox = styled.div`
   display: inline-block;
-  background-color: #311d3f;
-  width: 50px;
-  height: 50px;
-  border: none;
-  margin: 5px 20px;
-  cursor: pointer;
-  border-radius: 25px;
-  outline: 0;
+  position: relative;
+  left: 160px;
+  margin-top: 11px;
+  padding: 20px 5px;
 
-  &:hover {
-    background-color: #181818;
+  button {
+    display: inline-block;
+    background-color: #311d3f;
+    width: 50px;
+    height: 50px;
+    border: none;
+    margin: 5px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    outline: 0;
+
+    &:hover {
+      background-color: #181818;
+    }
   }
 `;
 
@@ -32,8 +40,12 @@ export default function Months() {
   };
 
   return state.state.map(({ title }, i) => (
-    <MonthBox key={i} onClick={(e) => click(title, e)}>
-      {title}
+    <MonthBox>
+      <button>
+        <StyledLink key={i} onClick={(e) => click(title, e)}>
+          {title}
+        </StyledLink>
+      </button>
     </MonthBox>
   ));
 }
