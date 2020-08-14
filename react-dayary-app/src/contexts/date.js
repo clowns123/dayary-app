@@ -17,17 +17,18 @@ for (let i = 0; i <= 11; i++) {
 }
 
 const DateContext = createContext({
-  state: months,
-  actions: {
-    setInOpened: () => {},
+  state: { months },
+  action: {
+    setMonths: () => {},
   },
 });
 
 const DateProvider = ({ children }) => {
-  const [inOpened, setInOpened] = useState(false);
+  const [state, setState] = useState(months);
+
   const value = {
-    state: inOpened,
-    actions: setInOpened,
+    state: { state },
+    action: { setState },
   };
 
   return <DateContext.Provider value={value}>{children}</DateContext.Provider>;
