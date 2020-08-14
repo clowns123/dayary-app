@@ -2,13 +2,14 @@ import React from "react";
 import Days from "../components/Days";
 import client from "../lib/api/client";
 
+const nowDate = new Date();
+const nowYear = nowDate.getFullYear();
+const nowMounth = nowDate.getMonth();
+
 export default function DaysContainer() {
   return <Days click={click} />;
 }
 
-const nowDate = new Date();
-const nowYear = nowDate.getFullYear();
-const nowMounth = nowDate.getMonth();
 const click = async (_, year = nowYear, mounth = nowMounth) => {
   const res = await client.get("api/posts");
   if (mounth < 10) {

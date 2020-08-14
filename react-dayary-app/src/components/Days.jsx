@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import client from "../lib/api/client";
+import DateData from "../App";
 
 const DaysBox = styled.div`
   box-sizing: border-box;
@@ -44,7 +44,7 @@ export default function Days({ getDate, click }) {
   return (
     <DaysBox>
       <DayList>
-        <DayListItem />
+        <DayListItem onClick={click} />
       </DayList>
     </DaysBox>
   );
