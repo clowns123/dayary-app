@@ -3,13 +3,23 @@ import mongoose from 'mongoose';
 
 const { ObjectId } = mongoose.Types;
 
-export const checkObjectId = (ctx, next) => {
+export const getPostById = async (ctx, next) => {
   const { id } = ctx.params;
   if (!ObjectId.isValid(id)) {
     ctx.status = 400;
     return;
   }
-  return next();
+  try {
+    const post = await Post.findById(id);
+    if (!post) {
+      ctx.status = 404;
+      return;
+    }
+    ctx.state.post = post;
+    return next();
+  } catch (e) {
+    ctx.throw(500, e);
+  }
 };
 
 /**
@@ -17,15 +27,14 @@ export const checkObjectId = (ctx, next) => {
  * {
  *  publishedDate: 날짜,
  *  message : '내용'
- *  userName : '작성자'
  * }
  */
 export const write = async (ctx) => {
-  const { publishedDate, message, userName } = ctx.request.body;
+  const { publishedDate, message } = ctx.request.body;
   const post = new Post({
     publishedDate,
     message,
-    userName,
+    user: ctx.state.user,
   });
   try {
     await post.save();
@@ -34,7 +43,6 @@ export const write = async (ctx) => {
     ctx.throw(500, e);
   }
 };
-
 /**
  * GET /api/posts
  */

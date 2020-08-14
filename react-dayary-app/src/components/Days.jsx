@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import client from "../lib/api/client";
 
 const DaysBox = styled.div`
   box-sizing: border-box;
@@ -39,8 +40,7 @@ const DayListItem = styled.button`
   outline: 0;
 `;
 
-export default function Days({ getDate }) {
-  console.log(getDate);
+export default function Days({ getDate, click }) {
   return (
     <DaysBox>
       <DayList>
