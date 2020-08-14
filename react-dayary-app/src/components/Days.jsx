@@ -34,7 +34,6 @@ const DayListItem = styled.button`
   outline: 0;
 `;
 
-<<<<<<< HEAD
 const StyledInput = styled.input`
   text-align: left;
   width: 210px;
@@ -49,8 +48,6 @@ const SaveButton = styled.button`
   border: none;
 `;
 let num = 0;
-=======
->>>>>>> 7b6eb4d64fe9120c9c9deb33c836bfa4032c9bf0
 export default function Days({ months, lastDay }) {
   let obj = [];
   for (let i = 1; i <= lastDay; i++) {
@@ -89,25 +86,14 @@ export default function Days({ months, lastDay }) {
             maskClosable={true}
             onClose={closeModal}
           >
-<<<<<<< HEAD
-            <span>Day {num} &nbsp;</span>
-            <StyledInput autoFocus></StyledInput>
-            <button>Save</button>
-=======
             {a.state.message}
->>>>>>> 7b6eb4d64fe9120c9c9deb33c836bfa4032c9bf0
           </Modal>
         )}
 
         {obj.map((o, i) => {
           return (
-<<<<<<< HEAD
             <DayListItem key={o} onClick={() => openModal(i + 1)}>
               Day {i + 1}
-=======
-            <DayListItem key={i} onClick={() => openModal(i + 1)}>
-              {i + 1}
->>>>>>> 7b6eb4d64fe9120c9c9deb33c836bfa4032c9bf0
             </DayListItem>
           );
         })}
